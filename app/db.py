@@ -8,7 +8,6 @@ from app.config import (
     SNOWFLAKE_WAREHOUSE, SNOWFLAKE_DATABASE, SNOWFLAKE_ROLE, SNOWFLAKE_SCHEMA
 )
 
-# Create Snowflake URL
 DATABASE_URL = URL(
     account=SNOWFLAKE_ACCOUNT,
     user=SNOWFLAKE_USER,
@@ -19,24 +18,19 @@ DATABASE_URL = URL(
     role=SNOWFLAKE_ROLE
 )
 
-# Debug print (remove in production)
 print(f"Connecting to Snowflake with user: {SNOWFLAKE_USER}")
 
 try:
-    # Create engine with Snowflake dialect
     engine = create_engine(DATABASE_URL)
     
-    # Create session factory
     SessionLocal = sessionmaker(
         autocommit=False, 
         autoflush=False, 
         bind=engine
     )
     
-    # Create declarative base
     Base = declarative_base()
     
-    # Optional: Test connection
     def test_connection():
         try:
             with engine.connect() as connection:
@@ -45,8 +39,6 @@ try:
         except Exception as conn_error:
             print(f"Connection test failed: {conn_error}")
     
-    # Uncomment to test connection during startup
-    # test_connection()
 
 except SQLAlchemyError as e:
     print(f"Error creating SQLAlchemy engine: {e}")

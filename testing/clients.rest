@@ -15,8 +15,8 @@ POST http://127.0.0.1:8000/api/v1/clients
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "johndoe@example.com"
+  "name": "salman khan",
+  "email": "salmank4954@gmail.com"
 }
 
 ###
@@ -39,7 +39,7 @@ Content-Type: application/json
 # Replace {client_id} with the actual client's ID (e.g., 1)
 ###
 
-GET http://127.0.0.1:8000/api/v1/clients/d6b92f7e-bf6e-45dd-897e-f0ae6869641b
+GET http://127.0.0.1:8000/api/v1/clients/26748223-437a-4c3b-a3e1-4c0570568f5c
 Content-Type: application/json
 
 ###
@@ -51,12 +51,12 @@ Content-Type: application/json
 # Replace {client_id} with the actual client's ID (e.g., 1)
 ###
 
-PUT http://127.0.0.1:8000/api/v1/clients/d6b92f7e-bf6e-45dd-897e-f0ae6869641b
+PUT http://127.0.0.1:8000/api/v1/clients/26748223-437a-4c3b-a3e1-4c0570568f5c
 Content-Type: application/json
 
 {
-  "name": "Updated Client Name",
-  "email": "updated@example.com"
+  "name": "salman khan updated",
+  "email": "salmank4954@gmail.com"
 }
 
 ###
@@ -68,5 +68,5 @@ Content-Type: application/json
 # Replace {client_id} with the actual client's ID (e.g., 1)
 ###
 
-DELETE http://127.0.0.1:8000/api/v1/clients/d6b92f7e-bf6e-45dd-897e-f0ae6869641b
+DELETE http://127.0.0.1:8000/api/v1/clients/26748223-437a-4c3b-a3e1-4c0570568f5c
 Content-Type: application/json
