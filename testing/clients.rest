@@ -1,0 +1,72 @@
+###
+# FastAPI Client API Testing
+# -----------------------------------
+# Base URL: http://127.0.0.1:8000/api/v1
+# Description: Test all CRUD operations for the clients API
+###
+
+# -----------------------------------
+# Create a New Client
+# Endpoint: POST /api/v1/clients
+# Purpose: Create a new client in the database
+###
+
+POST http://127.0.0.1:8000/api/v1/clients
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com"
+}
+
+###
+
+# -----------------------------------
+# Get All Clients
+# Endpoint: GET /api/v1/clients
+# Purpose: Retrieve a list of all clients
+###
+
+GET http://127.0.0.1:8000/api/v1/clients
+Content-Type: application/json
+
+###
+
+# -----------------------------------
+# Get a Client by ID
+# Endpoint: GET /api/v1/clients/{client_id}
+# Purpose: Fetch a single client by their ID
+# Replace {client_id} with the actual client's ID (e.g., 1)
+###
+
+GET http://127.0.0.1:8000/api/v1/clients/d6b92f7e-bf6e-45dd-897e-f0ae6869641b
+Content-Type: application/json
+
+###
+
+# -----------------------------------
+# Update an Existing Client
+# Endpoint: PUT /api/v1/clients/{client_id}
+# Purpose: Update the information of an existing client
+# Replace {client_id} with the actual client's ID (e.g., 1)
+###
+
+PUT http://127.0.0.1:8000/api/v1/clients/d6b92f7e-bf6e-45dd-897e-f0ae6869641b
+Content-Type: application/json
+
+{
+  "name": "Updated Client Name",
+  "email": "updated@example.com"
+}
+
+###
+
+# -----------------------------------
+# Delete a Client
+# Endpoint: DELETE /api/v1/clients/{client_id}
+# Purpose: Remove a client from the database
+# Replace {client_id} with the actual client's ID (e.g., 1)
+###
+
+DELETE http://127.0.0.1:8000/api/v1/clients/d6b92f7e-bf6e-45dd-897e-f0ae6869641b
+Content-Type: application/json
