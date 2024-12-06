@@ -3,3 +3,4 @@ uvicorn
 sqlalchemy
 snowflake-connector-python
 pydantic
+python-dotenv

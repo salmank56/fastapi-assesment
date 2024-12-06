@@ -8,21 +8,21 @@ from app.crud.client import (
     delete_client,
 )
 from app.schemas.client import ClientCreate, ClientResponse
-from app.db import SessionLocal
+from app.db import SessionLocal, get_db
 
 router = APIRouter()
 
 # Dependency
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+# Dependency to get the database session
+
+
 
 @router.post("/clients", response_model=ClientResponse, status_code=201)
-def create_new_client(client: ClientCreate, db: Session = Depends(get_db)):
-    return create_client(db, client)
+async def create_new_client(client: ClientCreate, db: Session = Depends(get_db)):
+    try:
+        return await create_client(db, client)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/clients", response_model=list[ClientResponse])
 def read_clients(db: Session = Depends(get_db)):

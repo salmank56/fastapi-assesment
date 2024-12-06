@@ -8,7 +8,8 @@ def get_all_clients(db: Session):
 def get_client_by_id(db: Session, client_id: int):
     return db.query(Client).filter(Client.id == client_id).first()
 
-def create_client(db: Session, client: ClientCreate):
+async def create_client(db: Session, client: ClientCreate):
+    print(db, client, 'db and client')
     db_client = Client(name=client.name, email=client.email)
     db.add(db_client)
     db.commit()
