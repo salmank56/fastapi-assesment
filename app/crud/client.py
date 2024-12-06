@@ -9,12 +9,16 @@ def get_client_by_id(db: Session, client_id: int):
     return db.query(Client).filter(Client.id == client_id).first()
 
 async def create_client(db: Session, client: ClientCreate):
-    print(db, client, 'db and client')
-    db_client = Client(name=client.name, email=client.email)
-    db.add(db_client)
-    db.commit()
-    db.refresh(db_client)
-    return db_client
+    try:
+        db_client = Client(name=client.name, email=client.email)
+        db.add(db_client)
+        db.flush()  # This helps generate the ID before commit
+        db.commit()
+        db.refresh(db_client)
+        return db_client
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"Error creating client: {str(e)}")
 
 def update_client(db: Session, client_id: int, updated_data: dict):
     client = db.query(Client).filter(Client.id == client_id).first()
